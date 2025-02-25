@@ -7,3 +7,4 @@ export const CatalogPage = () => {
     </div>
   )
 }
+export default CatalogPage;

@@ -1,21 +1,24 @@
-
-
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage.jsx";
-import CatalogPage from "../pages/CatalogPage/CatalogPage.jsx";
-import CarDetailPage from "../pages/CarDetailPage/CarDetailPage.jsx";
-import Layout from "./Layout/Layout.jsx";
+import { lazy, Suspense } from "react";
+import Header from "./Header/Header.jsx";
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
+const CatalogPage = lazy(() => import("../pages/CatalogPage/CatalogPage.jsx"));
+const CarDetailPage = lazy(() => import("../pages/CarDetailPage/CarDetailPage.jsx"));
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="catalog" element={<CatalogPage />} />
-        <Route path="catalog/:id" element={<CarDetailPage />} />
-        <Route path="favorites" element={<div>Favorites Page</div>} />
-      </Route>
-    </Routes>
+    <div>
+      <Header /> 
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="catalog/:id" element={<CarDetailPage />} />
+          <Route path="favorites" element={<div>Favorites Page</div>} />
+        </Routes>
+      </Suspense>
+    </div>
   );
 }
 

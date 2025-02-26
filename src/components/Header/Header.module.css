@@ -1,7 +1,29 @@
-.header {
+.header{
     display: flex;
+    align-items: center;
+  background-color: var(--secondary-color-light-gray2);
+  height: 68px;
+}
+
+
+.linksContainer{
+    width: 100%;
+   
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #f2f4f7;
-    padding: 24px 120px;
-    background-color: var(--secondary-color-light-gray2);
+    margin: 24px 120px;
+}
+
+
+  .logoLink{
+    width: 102px;
+    height:16px ;
+margin-right: 960px;
+  }
+
+  .carLink{
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }

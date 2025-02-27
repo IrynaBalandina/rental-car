@@ -1,7 +1,7 @@
 .carDetail {
-    display: flex; /* 🔹 Встановлюємо flex-контейнер */
-    align-items: flex-start; /* 🔹 Вирівнюємо контент по верхньому краю */
-    gap: 20px; /* 🔹 Додаємо відстань між фото та інформацією */
+    display: flex; 
+    align-items: flex-start; 
+    gap: 20px; 
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;

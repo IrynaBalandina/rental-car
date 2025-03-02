@@ -8,7 +8,7 @@ const Header = () => {
 
 
   <Link className={css.logoLink} to = "/">
-  <img src="/public/Logo.svg" alt="logo"  />
+  <img src="/icons/Logo.svg" alt="logo"  />
   </Link>
   <nav className={css.navLink}>
     <ul className={css.carLink}>

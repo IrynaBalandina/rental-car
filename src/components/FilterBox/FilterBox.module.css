@@ -34,8 +34,8 @@
 
 
 
-.brandSelect:focus option:hover, 
-.priceSelect:focus option:hover {
+.brandSelect option:hover, 
+.priceSelect option:hover {
   color: black; 
   
 }

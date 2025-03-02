@@ -30,7 +30,7 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
 
     
       <div>
-        <p className={css.rentalPrice}>Rental Price</p>
+        <p className={css.rentalPrice}>Price/1 Hour</p>
         <select className={css.priceSelect}
           name="rentalPrice" 
           value={filters.rentalPrice || ""} 
@@ -44,7 +44,7 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
 
  
       <div>
-        <p className={css.mileageCount}>Mileage</p>
+        <p className={css.mileageCount}>Car mileage</p>
         <div className={css.mileageWrapper}>
           <input 
             className={`${css.mileageInput} ${css.mileageLeft}`}
@@ -64,23 +64,8 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
             onChange={handleFilterChange}
           />
         </div>
-{/*         
-        <input 
-          className={css.mileageInput}
-          type="number" 
-          name="minMileage" 
-          placeholder="From" 
-          value={filters.minMileage || ""} 
-          onChange={handleFilterChange}
-        />
-        <input 
-          className={css.mileageInput}
-          type="number" 
-          name="maxMileage" 
-          placeholder="To" 
-          value={filters.maxMileage || ""} 
-          onChange={handleFilterChange}
-        /> */}
+         
+   
       </div>
 
   
@@ -92,5 +77,4 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
 };
 
 export default FilterBox;
-
 

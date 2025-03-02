@@ -104,6 +104,11 @@
   margin-bottom: 10px;
 }
 
+.conditionItem, .yearInfo, .typeInfo, .fuelInfo, .engineInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .carSpecifications  p {
 margin-bottom: 16px;
 }

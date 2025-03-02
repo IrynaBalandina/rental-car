@@ -64,25 +64,28 @@ const CarDetailPage = () => {
         <div className={css.rentalConditions}>
           <h3>Rental Conditions</h3>
           <ul>
-            {car.rentalConditions.map((condition, index) => (
-              <li key={index}>✅ {condition}</li>
-            ))}
-          </ul>
+  {car.rentalConditions.map((condition, index) => (
+    <li key={index} className={css.conditionItem}>
+      <img src="/public/check-circle.svg" alt="Check Icon"  />
+      {condition}
+    </li>
+  ))}
+</ul>
         </div>
 
         <div className={css.carSpecifications}>
           <h3>Car Specifications</h3>
-          <p>📅 Year: {car.year}</p>
-          <p>🚗 Type: {car.type}</p>
-          <p>⛽ Fuel Consumption: {car.fuelConsumption} L/100km</p>
-          <p>🔧 Engine Size: {car.engineSize}</p>
+          <p className={css.yearInfo}><img src="/public/calendar.svg" alt="Check Icon" />Year: {car.year}</p>
+          <p className={css.typeInfo}><img src="/public/car.svg" alt="Car Icon" /> Type: {car.type}</p>
+          <p className={css.fuelInfo}><img src="/public/fuel-pump.svg" alt="Fuel Icon" /> Fuel Consumption: {car.fuelConsumption} L/100km</p>
+          <p className={css.engineInfo} ><img src="/public/gear.svg" alt="Gear Icon" /> Engine Size: {car.engineSize}</p>
         </div>
 
         <div className={css.features}>
           <h3>Accessories and Functionalities</h3>
           <ul>
             {[...car.accessories, ...car.functionalities].map((feature, index) => (
-              <li key={index}>✅ {feature}</li>
+              <li key={index} className={css.conditionItem}> <img src="/public/check-circle.svg" alt="Check Icon"  />{feature}</li>
             ))}
           </ul>
         </div>

@@ -30,21 +30,21 @@
   }
   
   .homePageBtn {
-  border-radius: 12px;
-  width: 276px;
-  height: 44px;
-  padding-top: 12px;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0%;
-  text-decoration: none; 
-  background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
-  transition: background-color var(--primary-transition);
-  
-  }
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 12px;
+    width: 276px;
+    height: 44px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none; 
+    background-color: var(--primary-color-blue);
+    color: var(--primary-color-white);
+    transition: background-color var(--primary-transition);
+}
   .homePageBtn:hover,
   .homePageBtn:focus {
     background-color: var(--secondary-color-blue);

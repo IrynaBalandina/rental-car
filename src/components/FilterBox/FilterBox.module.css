@@ -4,29 +4,41 @@
   gap: 15px;
   max-width: 1000px;
   margin: 20px auto;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: flex-end;
 }
 
 
-.brandField, .rentalPrice, .mileageCount {
+.brandName, .rentalPrice, .mileageCount {
   font-size: 16px;
+  color: var(--primary-color-gray);
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+
+  gap: 6px;
 }
 
 
 .brandSelect, .priceSelect {
   height: 44px; 
   background-color: var(--secondary-color-light-gray3);
+  color: var(--primary-color-gray);
   padding: 10px 15px;
   border: 1px solid var(--secondary-color-light-gray2);
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  overflow-y: auto; 
 }
 
+
+
+
+.brandSelect:focus option:hover, 
+.priceSelect:focus option:hover {
+  color: black; 
+  
+}
 
 .mileageWrapper {
   display: flex;
@@ -65,4 +77,5 @@
 .searchBtn:hover,
 .searchBtn:focus {
   background-color: var(--secondary-color-blue);
-}
+} 
+

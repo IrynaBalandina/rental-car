@@ -1,35 +1,67 @@
-.filterBox{
-    display: flex;
-    gap: 15px;
-    max-width: 1000px;
-    height: 68px;
-    margin: 20px auto;
-    flex-wrap: wrap;
 
+.filterBox {
+  display: flex;
+  gap: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 
-.priceField{
-
+.brandField, .rentalPrice, .mileageCount {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 
-.mileageField{
-
+.brandSelect, .priceSelect {
+  height: 44px; 
+  background-color: var(--secondary-color-light-gray3);
+  padding: 10px 15px;
+  border: 1px solid var(--secondary-color-light-gray2);
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 
-.searchBtn{
-   
-      width: 156px;
-      height: 44px;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 20px;
-      letter-spacing: 0%;
-      columns: var( --primary-color-white);
-      background-color: var(--primary-color-blue);
+.mileageWrapper {
+  display: flex;
+  align-items: center; 
+  gap: 5px;
 }
+
+
+.mileageInput {
+  height: 44px;
+  padding: 10px 15px;
+  background-color: var(--secondary-color-light-gray3);
+  border: 1px solid var(--secondary-color-light-gray2);
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.searchBtn {
+  height: 44px; 
+  padding: 10px 24px;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; 
+}
+
 .searchBtn:hover,
 .searchBtn:focus {
   background-color: var(--secondary-color-blue);

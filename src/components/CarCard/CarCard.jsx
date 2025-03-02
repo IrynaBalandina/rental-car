@@ -8,18 +8,18 @@ const CarCard = ({ car }) => {
     navigate(`/catalog/${car.id}`);
   };
 
-  // 🔹 Виділяємо місто та країну (беремо 2 останніх слова)
+
   const addressParts = car.address.split(", ");
   const shortAddress = addressParts.slice(-2).join(", ");
 
   return (
     <div className={css.carCard}>
       <img className={css.imgCar} src={car.img} alt={`${car.brand} ${car.model}`} />
-      <h3 className={css.brand}>{car.brand} {car.model} {car.year}</h3>
-      <p className={css.price}>{car.rentalPrice} $</p>
-      <p className={css.address}>{shortAddress}</p> 
-      <p className={css.rental}>{car.rentalCompany}</p>
-      <p>{car.mileage.toLocaleString()} km</p>
+      <h3 className={css.brand}>{car.brand} <span className={css.carModel}>{car.model}</span> {car.year} {car.rentalPrice}$</h3>
+
+      <p className={css.address}>{shortAddress} {car.rentalCompany}</p> 
+    
+      <p className={css.carMileage}>{car.type} {car.mileage.toLocaleString()} km</p>
 
       <button className={css.readMoreBtn} onClick={handleClick}>
         Read more

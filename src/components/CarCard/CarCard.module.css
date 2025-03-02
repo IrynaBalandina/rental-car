@@ -10,7 +10,10 @@ border-radius: 14px;
 .brand{
 font-size:20px;
 font-weight: normal;
-
+margin-bottom: 8px;
+white-space: nowrap; 
+overflow: hidden;
+text-overflow: ellipsis;  
 }
 
 .carModel{
@@ -18,12 +21,34 @@ font-weight: normal;
 }
 
 
-.address, .rental, .carMileage{
-font-size: 16px;
-color: var(  --primary-color-gray);
+.address, .rental {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color-gray);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-bottom: 8px;
 }
 
-
+.carMileage{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    white-space: nowrap; 
+    white-space: nowrap; 
+    color: var(--primary-color-gray);
+}
 
 .readMoreBtn{
     width: 100%;
@@ -33,6 +58,6 @@ color: var(  --primary-color-gray);
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0%;
-    columns: var( --primary-color-white);
+  color: var( --primary-color-white);
     background-color: var(--primary-color-blue);
 }

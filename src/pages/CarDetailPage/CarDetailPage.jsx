@@ -44,21 +44,24 @@ const CarDetailPage = () => {
 
         <form className={css.bookingForm} onSubmit={handleSubmit}>
           <h3>Book your car now</h3>
+          <p className={css.textForm}>Stay connected! We are always ready to help you.</p>
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleInputChange} required />
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
           <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
           <input type="text" name="comment" placeholder="Comment" value={formData.comment} onChange={handleInputChange} />
-          <button type="submit">Send</button>
+          <div className={css.buttonContainer}>
+    <button type="submit">Send</button>
+  </div>
         </form>
       </div>
 
       <div className={css.carInfo}>
         <h2>{car.brand} {car.model} ({car.year})</h2>
         <p>{car.address} Mileage: {car.mileage.toLocaleString()} km</p>
-        <p><strong>💰 Price:</strong> ${car.rentalPrice} </p>
+        <p> <span className={css.priceCar}>${car.rentalPrice}</span> </p>
         <p className={css.description}>{car.description}</p>
         
-        <div className={css.carSpecifications}>
+        <div className={css.rentalConditions}>
           <h3>Rental Conditions</h3>
           <ul>
             {car.rentalConditions.map((condition, index) => (
@@ -67,7 +70,7 @@ const CarDetailPage = () => {
           </ul>
         </div>
 
-        <div className={css.rentalConditions}>
+        <div className={css.carSpecifications}>
           <h3>Car Specifications</h3>
           <p>📅 Year: {car.year}</p>
           <p>🚗 Type: {car.type}</p>

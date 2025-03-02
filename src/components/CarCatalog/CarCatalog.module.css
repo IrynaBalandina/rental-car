@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+    margin-bottom:60px ;
 }
 
 .loadMoreContainer {
@@ -17,14 +18,16 @@
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    background-color:var(--primary-color-white);
+    background-color:transparent;
     color:var( --primary-color-black);
-    border-radius: 8px;
-    border-color: var(--primary-color-blue) ;
+    border-radius: 12px;
+    border:1px solid var(--primary-color-blue) ;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
   }
   
-  .loadMoreBtn:hover {
-    background-color: #0056b3;
+  .loadMoreBtn:hover,
+  .loadMoreBtn:focus {
+      background-color: transparent; 
+      border: 1px solid var(--secondary-color-blue);
   }

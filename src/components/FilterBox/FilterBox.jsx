@@ -16,7 +16,7 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
     <div className={css.filterBox}>
 
       <div className={css.brandField}>
-        <p>Car brand</p>
+        <p className={css.brandName}>Car brand</p>
         <select className={css.brandSelect}
           name="brand" 
           value={filters.brand || ""} 
@@ -30,7 +30,7 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
 
     
       <div>
-        <p>Rental Price</p>
+        <p className={css.rentalPrice}>Rental Price</p>
         <select className={css.priceSelect}
           name="rentalPrice" 
           value={filters.rentalPrice || ""} 
@@ -44,7 +44,27 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
 
  
       <div>
-        <p>Mileage</p>
+        <p className={css.mileageCount}>Mileage</p>
+        <div className={css.mileageWrapper}>
+          <input 
+            className={`${css.mileageInput} ${css.mileageLeft}`}
+            type="number" 
+            name="minMileage" 
+            placeholder="From" 
+            value={filters.minMileage || ""} 
+            onChange={handleFilterChange}
+          />
+       
+          <input 
+            className={`${css.mileageInput} ${css.mileageRight}`}
+            type="number" 
+            name="maxMileage" 
+            placeholder="To" 
+            value={filters.maxMileage || ""} 
+            onChange={handleFilterChange}
+          />
+        </div>
+{/*         
         <input 
           className={css.mileageInput}
           type="number" 
@@ -60,7 +80,7 @@ const FilterBox = ({ filters, setFilters, brands = [], prices = [], onSearch }) 
           placeholder="To" 
           value={filters.maxMileage || ""} 
           onChange={handleFilterChange}
-        />
+        /> */}
       </div>
 
   

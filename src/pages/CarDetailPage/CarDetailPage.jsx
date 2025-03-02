@@ -45,10 +45,33 @@ const CarDetailPage = () => {
         <form className={css.bookingForm} onSubmit={handleSubmit}>
           <h3>Book your car now</h3>
           <p className={css.textForm}>Stay connected! We are always ready to help you.</p>
-          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleInputChange} required />
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
-          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
-          <input type="text" name="comment" placeholder="Comment" value={formData.comment} onChange={handleInputChange} />
+          <input 
+          type="text" 
+          name="name" 
+          placeholder="Name" 
+          value={formData.name} 
+          onChange={handleInputChange} 
+          required />
+          <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          value={formData.email} 
+          onChange={handleInputChange} 
+          required />
+          <input 
+          type="tel" 
+          name="phone" 
+          placeholder="Phone Number" 
+          value={formData.phone} 
+          onChange={handleInputChange} 
+          required />
+          <input 
+          type="text" 
+          name="comment" 
+          placeholder="Comment" 
+          value={formData.comment} 
+          onChange={handleInputChange} />
           <div className={css.buttonContainer}>
     <button type="submit">Send</button>
   </div>
@@ -75,10 +98,18 @@ const CarDetailPage = () => {
 
         <div className={css.carSpecifications}>
           <h3>Car Specifications</h3>
-          <p className={css.yearInfo}><img src="/public/calendar.svg" alt="Check Icon" />Year: {car.year}</p>
-          <p className={css.typeInfo}><img src="/public/car.svg" alt="Car Icon" /> Type: {car.type}</p>
-          <p className={css.fuelInfo}><img src="/public/fuel-pump.svg" alt="Fuel Icon" /> Fuel Consumption: {car.fuelConsumption} L/100km</p>
-          <p className={css.engineInfo} ><img src="/public/gear.svg" alt="Gear Icon" /> Engine Size: {car.engineSize}</p>
+          <p className={css.yearInfo}>
+            <img src="/public/calendar.svg" alt="Check Icon" />
+            Year: {car.year}</p>
+          <p className={css.typeInfo}>
+            <img src="/public/car.svg" alt="Car Icon" />
+             Type: {car.type}</p>
+          <p className={css.fuelInfo}>
+            <img src="/public/fuel-pump.svg" alt="Fuel Icon" />
+             Fuel Consumption: {car.fuelConsumption} L/100km</p>
+          <p className={css.engineInfo} >
+            <img src="/public/gear.svg" alt="Gear Icon" />
+             Engine Size: {car.engineSize}</p>
         </div>
 
         <div className={css.features}>

@@ -1,74 +1,88 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCarById } from "../../api.js";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCarById } from "../../redux/operations";
+import { selectCarById, selectIsLoading, selectError } from "../../redux/selectors";
 import css from "./CarDetailPage.module.css"; 
 
 const CarDetailPage = () => {
   const { id } = useParams(); 
-  const [car, setCar] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const car = useSelector(selectCarById);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", comment: "" });
 
   useEffect(() => {
-    const fetchCarDetails = async () => {
-      try {
-        const data = await getCarById(id);
-        setCar(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (id) {
+      dispatch(fetchCarById(id)); 
+    }
+  }, [dispatch, id]);
 
-    fetchCarDetails();
-  }, [id]);
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>❌ {error.message}</p>;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`🚗 Бронювання успішне! Дякуємо, ${formData.name}!`);
+    setFormData({ name: "", email: "", phone: "", comment: "" }); 
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>❌ {error}</p>;
   if (!car) return <p>Car not found</p>;
 
   return (
     <div className={css.carDetail}>
- 
-      <img src={car.img} alt={`${car.brand} ${car.model}`} className={css.carImage} />
+      <div className={css.leftSection}>
+        <img src={car.img} alt={`${car.brand} ${car.model}`} className={css.carImage} />
 
-  
+        <form className={css.bookingForm} onSubmit={handleSubmit}>
+          <h3>Book your car now</h3>
+          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleInputChange} required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
+          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
+          <input type="text" name="comment" placeholder="Comment" value={formData.comment} onChange={handleInputChange} />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
       <div className={css.carInfo}>
         <h2>{car.brand} {car.model} ({car.year})</h2>
-        <p>{car.address} Mileage: {car.mileage.toLocaleString()} </p>
-        <p><strong> </strong> ${car.rentalPrice} </p>
-        <p>{car.description}</p>
+        <p>{car.address} Mileage: {car.mileage.toLocaleString()} km</p>
+        <p><strong>💰 Price:</strong> ${car.rentalPrice} </p>
+        <p className={css.description}>{car.description}</p>
         
-        <div className={css.rentalConditions}>
+        <div className={css.carSpecifications}>
           <h3>Rental Conditions</h3>
           <ul>
             {car.rentalConditions.map((condition, index) => (
-              <li key={index}>✅  {condition}</li>
+              <li key={index}>✅ {condition}</li>
             ))}
           </ul>
         </div>
 
-        <div>
-        <h3>Car Specifications</h3>
-
-          <p><strong>📅 Year:</strong>{car.year}</p>
-          <p><strong>🚗 Type:</strong> {car.type}</p>
-          <p><strong>⛽ Fuel Consumption:</strong> {car.fuelConsumption} L/100km</p>
-          <p><strong>🔧 Engine Size:</strong> {car.engineSize}</p>
+        <div className={css.rentalConditions}>
+          <h3>Car Specifications</h3>
+          <p>📅 Year: {car.year}</p>
+          <p>🚗 Type: {car.type}</p>
+          <p>⛽ Fuel Consumption: {car.fuelConsumption} L/100km</p>
+          <p>🔧 Engine Size: {car.engineSize}</p>
         </div>
 
-        <div className={css.features}>
         <div className={css.features}>
           <h3>Accessories and Functionalities</h3>
           <ul>
             {[...car.accessories, ...car.functionalities].map((feature, index) => (
-              <li key={index}>✅  {feature}</li>
+              <li key={index}>✅ {feature}</li>
             ))}
           </ul>
         </div>
-        </div>
-
       </div>
     </div>
   );

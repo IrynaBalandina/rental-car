@@ -1,66 +1,56 @@
 import { useEffect, useState } from "react";
-import { getCars } from "../../api.js"; 
-import { filterCars } from "../../utils/fltersCars.js"; 
-import CarCard from "../CarCard/CarCard.jsx";
-import FilterBox from "../FilterBox/FilterBox.jsx"; 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCars } from "../../redux/operations";
+import { selectCars, selectIsLoading, selectError } from "../../redux/selectors";
+import CarCard from "../CarCard/CarCard";
+import FilterBox from "../FilterBox/FilterBox";
 import css from "./CarCatalog.module.css";
 
 const CarCatalog = () => {
-  const [cars, setCars] = useState([]);
-  const [filteredCars, setFilteredCars] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const dispatch = useDispatch();
+  const cars = useSelector(selectCars);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   const [filters, setFilters] = useState({ brand: "", rentalPrice: "", minMileage: "", maxMileage: "" });
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true); 
 
   useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        setLoading(true);
-        const data = await getCars({ limit: 10, page }); 
-        
-        if (data && data.cars) {
-          setCars(prevCars => [...prevCars, ...data.cars]); 
-          setHasMore(data.cars.length > 0);
-        } else {
-          setHasMore(false);
-        }
-      } catch (error) {
-        console.error("Помилка завантаження авто:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    dispatch(fetchCars({ limit: 12, page })); 
+  }, [dispatch, page]);
 
-    fetchCars();
-  }, [page]);
+  const handleSearch = () => {
+    setPage(1);
+    dispatch(fetchCars({ limit: 12, page: 1, ...filters }));
+  };
 
- 
-  useEffect(() => {
-    setFilteredCars(filterCars(cars, filters));
-  }, [filters, cars]);
-
+  const handleLoadMore = () => {
+    setPage(prevPage => prevPage + 1);
+  };
 
   const brands = [...new Set(cars.map(car => car.brand))];
+  const prices = [...new Set(cars.map(car => car.rentalPrice))].sort((a, b) => a - b);
 
   return (
     <div>
-   
-      <FilterBox filters={filters} setFilters={setFilters} brands={brands} /> 
-      
+      <FilterBox filters={filters} setFilters={setFilters} brands={brands} prices={prices} onSearch={handleSearch} /> 
+
       <div className={css.carCatalog}>
-        {filteredCars.length === 0 && !loading && <p>Not found</p>}
-
-        {filteredCars.map((car) => <CarCard key={car.id} car={car} />)}
-
-        {loading && <p>Loading...</p>}
-
-        {hasMore && !loading && (
-          <button className={css.loadMoreBtn} onClick={() => setPage(prev => prev + 1)}>
-       Load more
-          </button>
-        )}
+        {isLoading && <p>Loading...</p>}
+        {error && <p>❌ {error}</p>}
+        {cars.length === 0 && !isLoading && <p>No cars found</p>}
+        {cars.map((car) => <CarCard key={car.id} car={car} />)}
       </div>
+
+ 
+      {hasMore && !isLoading && (
+        <div className={css.loadMoreContainer}>
+          <button className={css.loadMoreBtn} onClick={handleLoadMore}>
+            Load More
+          </button>
+        </div>
+      )}
     </div>
   );
 };

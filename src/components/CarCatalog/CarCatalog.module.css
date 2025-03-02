@@ -1,6 +1,30 @@
 .carCatalog{
     width: 1200px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
 }
+
+.loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+
+  .loadMoreBtn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color:var(--primary-color-white);
+    color:var( --primary-color-black);
+    border-radius: 8px;
+    border-color: var(--primary-color-blue) ;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loadMoreBtn:hover {
+    background-color: #0056b3;
+  }

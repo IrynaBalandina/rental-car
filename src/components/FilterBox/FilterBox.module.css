@@ -21,14 +21,16 @@
 
 .searchBtn{
    
-        align-self: flex-end;
-        margin-top: 24px;
-        padding: 10px 24px;
-        background-color:var(--primary-color-blue) ;
-        color: var( --primary-color-white);
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: 500;
-        min-width: 120px;
+      width: 156px;
+      height: 44px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0%;
+      columns: var( --primary-color-white);
+      background-color: var(--primary-color-blue);
+}
+.searchBtn:hover,
+.searchBtn:focus {
+  background-color: var(--secondary-color-blue);
 }

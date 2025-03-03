@@ -27,3 +27,16 @@ margin-right: 960px;
     align-items: center;
     gap: 20px;
   }
+
+  .itemLink a {
+    text-decoration: none;
+    color: var(--primary-color-black);
+    transition: color 0.3s ease; 
+  }
+  
+
+  .itemLink a:hover, 
+  .itemLink a:focus {
+    color: var(--primary-color-blue);
+    text-decoration: underline; 
+  }

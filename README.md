@@ -1,8 +1,25 @@
-# React + Vite
+RentalCar
+Зручний для користувача додаток для оренди авто. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description
+Додаток дозволяє легко і швидко  обрати авто за певними параметрами - бренд, ціна, пробіг.Кнопка "Load more" завантажує більше авто. Для кожного авто доступна детальна інформація за посиланням.Також, на сторінці кожного авто є форма для оренди. 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Installation Instructions
+
+React + Vite
+React Router DOM 
+Redux Toolkit 
+
+Install dependencies:
+
+npm install
+
+Run the project:
+
+npm run dev
+
+
+
+Author - Iryna Balandina  https://github.com/IrynaBalandina

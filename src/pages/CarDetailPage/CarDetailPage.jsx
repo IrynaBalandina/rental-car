@@ -60,12 +60,13 @@ const CarDetailPage = () => {
           onChange={handleInputChange} 
           required />
           <input 
-          type="tel" 
-          name="phone" 
-          placeholder="Phone Number" 
-          value={formData.phone} 
-          onChange={handleInputChange} 
-          required />
+  type="date" 
+  name="date" 
+  className={css.dateInput} 
+  value={formData.date} 
+  onChange={handleInputChange} 
+  required 
+/>
           <input 
           type="text" 
           name="comment" 

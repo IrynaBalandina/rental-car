@@ -8,15 +8,16 @@ position: relative;
 border-radius: 14px;
 }
 
-.brand {
-  white-space: nowrap;
+.title{
+
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
+  white-space: nowrap;
+  justify-content: space-between;
+  margin-bottom: 8px;
+ 
+ 
   }
 
   .carDetails {

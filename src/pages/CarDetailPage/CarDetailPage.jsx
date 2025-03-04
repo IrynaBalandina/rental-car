@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarById } from "../../redux/operations";
 import { selectCarById, selectIsLoading, selectError } from "../../redux/selectors";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import css from "./CarDetailPage.module.css"; 
 
 const CarDetailPage = () => {
@@ -12,7 +14,7 @@ const CarDetailPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", comment: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", comment: "", date: null });
 
   useEffect(() => {
     if (id) {
@@ -26,6 +28,14 @@ const CarDetailPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleDateChange = (date) => {
+    setFormData({
+      ...formData,
+      date: date,
+    });
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,13 +69,13 @@ const CarDetailPage = () => {
           value={formData.email} 
           onChange={handleInputChange} 
           required />
-          <input 
-  type="date" 
-  name="date" 
+     <DatePicker 
+  selected={formData.date} 
+  onChange={handleDateChange} 
   className={css.dateInput} 
-  value={formData.date} 
-  onChange={handleInputChange} 
-  required 
+  placeholderText="Booking Date" 
+  dateFormat="yyyy-MM-dd" 
+  required
 />
           <input 
           type="text" 

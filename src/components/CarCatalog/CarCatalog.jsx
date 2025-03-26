@@ -4,6 +4,7 @@ import { fetchCars } from "../../redux/operations";
 import { selectCars, selectIsLoading, selectError } from "../../redux/selectors";
 import CarCard from "../CarCard/CarCard";
 import FilterBox from "../FilterBox/FilterBox";
+import Loader from "../Loader/Loader.jsx"
 import css from "./CarCatalog.module.css";
 
 const CarCatalog = () => {
@@ -51,7 +52,7 @@ const CarCatalog = () => {
       <FilterBox filters={filters} setFilters={setFilters} brands={brands} prices={prices} onSearch={handleSearch} /> 
 
       <div className={css.carCatalog}>
-        {isLoading && page === 1 && <p>Loading...</p>}
+        {isLoading && page === 1 && <p><Loader/></p>}
         {error && <p>❌ {error}</p>}
         {allCars.length === 0 && !isLoading && <p>No cars found</p>}
         {allCars.map((car) => <CarCard key={car.id} car={car} />)}
